@@ -13,8 +13,15 @@ cd ~/cvrbot_ws
 ```sh
 git clone https://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@github.com/OxyBloom/cvrbot.git ./src/
 ```
-### Build workspace
+### Get dependencies
+```sh
+sudo rosdep init
+rosdep update
+cd ~/cvrbot_ws
+rosdep install --from-paths src -y --ignore-src
+```
 
+### Build workspace
 ```sh
 cd ~/cvrbot_ws
 colcon build
