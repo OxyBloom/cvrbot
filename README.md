@@ -1,5 +1,6 @@
 ""
 # CVRBot
+![image](https://github.com/user-attachments/assets/a37533fa-4f4c-4799-baf4-0291fe242123)
 
 
 # Setup
