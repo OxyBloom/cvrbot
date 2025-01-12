@@ -15,7 +15,6 @@ git clone https://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@github.com/OxyBloom/c
 ```
 ### Get dependencies
 ```sh
-sudo rosdep init
 rosdep update
 cd ~/cvrbot_ws
 rosdep install --from-paths src -y --ignore-src
@@ -30,4 +29,10 @@ colcon build
 
 ```sh
 source install/setup.bash
+```
+### This step should be done in each new terminal session or added to your shell's configuration file for convenience, e.g., ~/.bashrc:
+
+```sh
+echo "source ~/cvrbot_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
 ```
