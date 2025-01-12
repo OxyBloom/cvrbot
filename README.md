@@ -30,7 +30,7 @@ colcon build
 ```sh
 source install/setup.bash
 ```
-### This step should be done in each new terminal session or added to your shell's configuration file for convenience, e.g., ~/.bashrc:
+### If you don't want to source workspace everytime add to your shell's configuration file for convenience, e.g., ~/.bashrc:
 
 ```sh
 echo "source ~/cvrbot_ws/install/setup.bash" >> ~/.bashrc
