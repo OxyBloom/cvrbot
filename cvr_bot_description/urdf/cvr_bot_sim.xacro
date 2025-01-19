@@ -1,0 +1,253 @@
+<?xml version="1.0" ?>
+<robot name="cvr_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find cvr_bot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find cvr_bot_description)/urdf/cvr_bot.trans" />
+<xacro:include filename="$(find cvr_bot_description)/urdf/cvr.gazebo" />
+
+<xacro:property name="base_mass" value="1.034" />
+<xacro:property name="wheel_mass" value="0.637" />
+
+<xacro:macro name="box_inertia" params="b_mass b_x b_y b_z">
+        <mass value="${b_mass}"/>
+        <inertia  ixx="${b_mass*(b_y*b_y+b_z*b_z)/12}" ixy = "0" ixz = "0"
+                  iyy="${b_mass*(b_x*b_x+b_z*b_z)/12}" iyz = "0"
+                  izz="${b_mass*(b_x*b_x+b_y*b_y)/12}"/>
+</xacro:macro>
+
+<!-- Changed since y and z are switched in the axis frame -->
+<xacro:macro name="cylinder_inertia" params="c_mass r l">
+        <mass value="${c_mass}"/>
+        <inertia  ixx="${c_mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0"
+                  iyy="${c_mass*(r*r)/2}" iyz = "0"
+                  izz="${c_mass*(3*r*r+l*l)/12}" />
+</xacro:macro>
+
+<link name="base_link">
+</link>
+
+<joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+</joint>
+
+<link name="base_footprint">
+</link>
+
+<joint name="base_link_cvr_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="cvr_bot_base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+</joint>
+
+<link name="cvr_bot_base_link">
+  <inertial>
+    <origin xyz="0.0 0.0 0.12" rpy="0 0 0"/>
+    <!-- <mass value="0.0"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/> -->
+    <xacro:box_inertia b_mass="${base_mass}" b_x="0.585" b_y="0.30" b_z="0.25"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/base_link.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="blue"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/base_link.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<xacro:property name="wheel_inertia">
+    <xacro:cylinder_inertia c_mass="${wheel_mass}" r = "0.065" l="0.0471"/>   <!--  mass radius length of a wheel -->
+</xacro:property>
+
+<link name="br_wheel">
+  <inertial>
+    <origin xyz="3.3295281341716443e-07 -0.01297882501797129 4.708378639750599e-08" rpy="0 0 0"/>
+    <!-- <mass value="2.8377984367050755"/>
+    <inertia ixx="0.003618" iyy="0.006374" izz="0.003617" ixy="0.0" iyz="-0.0" ixz="-0.0"/> -->
+    <xacro:insert_block name="wheel_inertia" />
+  </inertial>
+  <visual>
+    <origin xyz="0.094914 0.152452 -0.064084" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.094914 0.152452 -0.064084" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="fr_wheel">
+  <inertial>
+    <origin xyz="-3.4029776965760483e-07 -0.013229185608238048 8.96948726264446e-08" rpy="0 0 0"/>
+    <mass value="2.8378245367654085"/>
+    <inertia ixx="0.003618" iyy="0.006374" izz="0.003617" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <!-- <xacro:insert_block name="wheel_inertia" /> -->
+  </inertial>
+  <visual>
+    <origin xyz="-0.095849 0.151214 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.095849 0.151214 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="fl_wheel">
+  <inertial>
+    <origin xyz="1.1905134419953889e-08 0.013229374105052844 -9.358828383099205e-08" rpy="0 0 0"/>
+    <mass value="2.837780331574404"/>
+    <inertia ixx="0.003618" iyy="0.006374" izz="0.003617" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <!-- <xacro:insert_block name="wheel_inertia" /> -->
+  </inertial>
+  <visual>
+    <origin xyz="-0.095849 -0.162786 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.095849 -0.162786 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bl_wheel">
+  <inertial>
+    <origin xyz="1.1905133892597952e-08 0.013229374105050401 -9.35882832064916e-08" rpy="0 0 0"/>
+    <mass value="2.837780331574404"/>
+    <inertia ixx="0.003618" iyy="0.006374" izz="0.003617" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <!-- <xacro:insert_block name="wheel_inertia" /> -->
+  </inertial>
+  <visual>
+    <origin xyz="0.096151 -0.162786 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.096151 -0.162786 -0.062584" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="BR_joint" type="continuous">
+  <origin xyz="-0.094914 -0.152452 0.064084" rpy="0 0 0"/>
+  <parent link="cvr_bot_base_link"/>
+  <child link="br_wheel"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="FR_joint" type="continuous">
+  <origin xyz="0.095849 -0.151214 0.062584" rpy="0 0 0"/>
+  <parent link="cvr_bot_base_link"/>
+  <child link="fr_wheel"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="FL_joint" type="continuous">
+  <origin xyz="0.095849 0.162786 0.062584" rpy="0 0 0"/>
+  <parent link="cvr_bot_base_link"/>
+  <child link="fl_wheel"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="BL_joint" type="continuous">
+  <origin xyz="-0.096151 0.162786 0.062584" rpy="0 0 0"/>
+  <parent link="cvr_bot_base_link"/>
+  <child link="bl_wheel"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<!-- IMU -->
+<link name="imu_link">
+  <!-- <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.02 0.015 0.008"/>
+    </geometry>
+  </collision> -->
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  <geometry>
+      <box size="0.02 0.015 0.008"/>
+    </geometry>
+  </visual>
+
+  <!-- <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+  </inertial> -->
+</link> 
+
+<joint
+  name="imujoint"
+  type="fixed">
+  <origin
+    xyz="0 0 0.15"
+    rpy="0 0 0" />
+  <parent
+    link="cvr_bot_base_link" />
+  <child
+    link="imu_link" />
+  <axis
+    xyz="0 0 0" />
+</joint>
+
+<link name="laser">
+  <inertial>
+    <origin xyz="-0.011945780406062 -0.000381929217680526 -0.0170649378129477" rpy="0 0 0" />
+    <mass value="0.073084435549317" />
+    <inertia ixx="1.96074931730795E-05" ixy="-3.62091076640009E-07" ixz="4.28230084046735E-07"
+              iyy="2.40983835136327E-05" iyz="1.50180909250652E-08"
+              izz="4.14184164228595E-05" />
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/laser_link.STL" />
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/laser_link.STL" />
+    </geometry>
+  </collision>
+</link>
+
+<joint name="laser_joint" type="fixed">
+  <origin xyz="0.080526 0.0 0.26" rpy="0 0 3.14" />
+  <parent link="cvr_bot_base_link" />
+  <child link="laser" />
+  <axis xyz="0 0 0" />
+</joint>
+
+</robot>

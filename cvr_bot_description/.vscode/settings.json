@@ -1,0 +1,43 @@
+{
+    "ros.distro": "humble",
+    "python.autoComplete.extraPaths": [
+        "/home/david/cvrbot_ws/build/serial_motor_demo",
+        "/home/david/cvrbot_ws/install/serial_motor_demo/lib/python3.10/site-packages",
+        "/home/david/cvrbot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/cvrbot_ws/install/cvr_bot_description/lib/python3.10/site-packages",
+        "/home/david/cvrbot_ws/install/cvr_bot_backup_description/lib/python3.10/site-packages",
+        "/home/david/pico_ws/install/swift_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/pid_msg/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/mav_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/ros_util/install/joystick_controller/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/ur5_control/lib/python3.10/site-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/servo_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/pymoveit2/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/payload_service/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/linkattacher_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/ebot_docking/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/david/cvrbot_ws/build/serial_motor_demo",
+        "/home/david/cvrbot_ws/install/serial_motor_demo/lib/python3.10/site-packages",
+        "/home/david/cvrbot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/cvrbot_ws/install/cvr_bot_description/lib/python3.10/site-packages",
+        "/home/david/cvrbot_ws/install/cvr_bot_backup_description/lib/python3.10/site-packages",
+        "/home/david/pico_ws/install/swift_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/pid_msg/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/mav_planning_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/pico_ws/install/mav_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/ros_util/install/joystick_controller/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/ur5_control/lib/python3.10/site-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/servo_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/pymoveit2/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/payload_service/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/linkattacher_msgs/local/lib/python3.10/dist-packages",
+        "/home/david/Eyantra/LB/colcon_ws/install/ebot_docking/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
