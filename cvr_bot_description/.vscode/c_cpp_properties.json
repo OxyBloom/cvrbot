@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/david/cvrbot_ws/install/serial_motor_demo_msgs/include/**",
+        "/home/david/cvrbot_ws/install/diffdrive_arduino/include/**",
+        "/home/david/pico_ws/install/whycon/include/**",
+        "/home/david/pico_ws/install/swift_msgs/include/**",
+        "/home/david/pico_ws/install/rotors_control/include/**",
+        "/home/david/pico_ws/install/pid_msg/include/**",
+        "/home/david/pico_ws/install/mav_system_msgs/include/**",
+        "/home/david/pico_ws/install/mav_state_machine_msgs/include/**",
+        "/home/david/pico_ws/install/mav_planning_msgs/include/**",
+        "/home/david/pico_ws/install/mav_msgs/include/**",
+        "/home/david/ros_util/install/joystick_controller/include/**",
+        "/home/david/Eyantra/LB/colcon_ws/install/servo_msgs/include/**",
+        "/home/david/Eyantra/LB/colcon_ws/install/realsense_gazebo_plugin/include/**",
+        "/home/david/Eyantra/LB/colcon_ws/install/payload_service/include/**",
+        "/home/david/Eyantra/LB/colcon_ws/install/linkattacher_msgs/include/**",
+        "/home/david/Eyantra/LB/colcon_ws/install/ebot_docking/include/**",
+        "/opt/ros/humble/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
