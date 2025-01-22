@@ -29,6 +29,35 @@
     <publish_odom_tf>true</publish_odom_tf>
     <publish_wheel_tf>true</publish_wheel_tf>
     <update_rate>100.0</update_rate>
+
+    <!-- <updateRate>10</updateRate> -->
+
+    <!-- Wheel Information -->
+    <!-- <leftJoint>FL_joint</leftJoint> -->
+    <!-- <rightJoint>FR_joint</rightJoint> -->
+    <!-- <leftJoint>BL_joint</leftJoint> -->
+    <!-- <rightJoint>BR_joint</rightJoint> -->
+    <!-- <wheelSeparation>0.3</wheelSeparation> -->
+    <!-- <wheelDiameter>0.125</wheelDiameter> -->
+
+
+    <!-- Limits -->
+    <!-- <wheelTorque>200</wheelTorque> -->
+    <!-- <wheelAcceleration>10.0</wheelAcceleration> -->
+
+
+    <!-- Output -->
+    <!-- <odometry_frame>odom</odometry_frame> -->
+    <!-- <odometryFrame>odom</odometryFrame> -->
+
+    <!-- <robot_base_frame>base_link</robot_base_frame> -->
+    <!-- <robotBaseFrame>base_link</robotBaseFrame> -->
+    
+    <!-- <publish_odom_tf>true</publish_odom_tf> -->
+    <!-- <publishOdomTF>true</publishOdomTF> -->
+    
+    <!-- <publish_wheel_tf>true</publish_wheel_tf> -->
+    <!-- <publishWheelTF>true</publishWheelTF> -->
   </plugin>
 </gazebo>
 
