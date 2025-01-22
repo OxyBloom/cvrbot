@@ -1,8 +1,7 @@
 ""
 # CVRBot
-<iframe src="https://gmail4069329.autodesk360.com/shares/public/SH30dd5QT870c25f12fc6a4bdac0912669a4?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+![cvr_bot_image v2](https://github.com/user-attachments/assets/54451a6c-dc5d-4ade-80e8-ca83ea193616)
 
-<img src="https://a360.co/3E5b8bG" alt="CVRBot Design" width="640">
 
 
 # Setup
