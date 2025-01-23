@@ -85,6 +85,17 @@ def generate_launch_description():
         )
     )
 
+    imu_driver_node = Node(
+        package="cvrbot_firmware",
+        executable="mpu6050_driver.py"
+    )
+
+    safety_stop = Node(
+        package="cvrbot_firmware",
+        executable="safety_stop",
+        output="screen",
+    )
+
 
     # Code for delaying a node (I haven't tested how effective it is)
     # 
@@ -111,5 +122,7 @@ def generate_launch_description():
         twist_mux,
         delayed_controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner
+        delayed_joint_broad_spawner,
+        imu_driver_node,
+        # safety_stop
     ])
