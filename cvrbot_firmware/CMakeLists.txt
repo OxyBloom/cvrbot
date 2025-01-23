@@ -30,6 +30,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
   ${PROJECT_NAME}/mpu6050_driver.py
   ${PROJECT_NAME}/safety_stop.py
+  ${PROJECT_NAME}/twist_relay.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
