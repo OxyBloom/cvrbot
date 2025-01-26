@@ -34,6 +34,10 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+install(PROGRAMS
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 install(TARGETS
   safety_stop
   DESTINATION lib/${PROJECT_NAME}
@@ -45,5 +49,7 @@ ament_export_dependencies(
   rclcpp
   rclcpp_lifecycle
 )
+
+ament_export_dependencies(ament_cmake_python)
 
 ament_package()

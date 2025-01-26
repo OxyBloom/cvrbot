@@ -38,6 +38,8 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
 
   cfg_.left_wheel_name = info_.hardware_parameters["left_wheel_name"];
   cfg_.right_wheel_name = info_.hardware_parameters["right_wheel_name"];
+  cfg_.left1_wheel_name = info_.hardware_parameters["left1_wheel_name"];
+  cfg_.right1_wheel_name = info_.hardware_parameters["right1_wheel_name"];
   cfg_.loop_rate = std::stof(info_.hardware_parameters["loop_rate"]);
   cfg_.device = info_.hardware_parameters["device"];
   cfg_.baud_rate = std::stoi(info_.hardware_parameters["baud_rate"]);
@@ -58,6 +60,8 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
 
   wheel_l_.setup(cfg_.left_wheel_name, cfg_.enc_counts_per_rev);
   wheel_r_.setup(cfg_.right_wheel_name, cfg_.enc_counts_per_rev);
+  wheel_l1_.setup(cfg_.left1_wheel_name, cfg_.enc_counts_per_rev);
+  wheel_r1_.setup(cfg_.right1_wheel_name, cfg_.enc_counts_per_rev);
 
 
   for (const hardware_interface::ComponentInfo & joint : info_.joints)
@@ -126,6 +130,16 @@ std::vector<hardware_interface::StateInterface> DiffDriveArduinoHardware::export
   state_interfaces.emplace_back(hardware_interface::StateInterface(
     wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r_.vel));
 
+  state_interfaces.emplace_back(hardware_interface::StateInterface(
+    wheel_l1_.name, hardware_interface::HW_IF_POSITION, &wheel_l1_.pos));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(
+    wheel_l1_.name, hardware_interface::HW_IF_VELOCITY, &wheel_l1_.vel));
+
+  state_interfaces.emplace_back(hardware_interface::StateInterface(
+    wheel_r1_.name, hardware_interface::HW_IF_POSITION, &wheel_r1_.pos));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(
+    wheel_r1_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r1_.vel));
+
   return state_interfaces;
 }
 
@@ -138,6 +152,12 @@ std::vector<hardware_interface::CommandInterface> DiffDriveArduinoHardware::expo
 
   command_interfaces.emplace_back(hardware_interface::CommandInterface(
     wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r_.cmd));
+
+  command_interfaces.emplace_back(hardware_interface::CommandInterface(
+    wheel_l1_.name, hardware_interface::HW_IF_VELOCITY, &wheel_l1_.cmd));
+
+  command_interfaces.emplace_back(hardware_interface::CommandInterface(
+    wheel_r1_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r1_.cmd));
 
   return command_interfaces;
 }
@@ -215,6 +235,13 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
   pos_prev = wheel_r_.pos;
   wheel_r_.pos = wheel_r_.calc_enc_angle();
   wheel_r_.vel = (wheel_r_.pos - pos_prev) / delta_seconds;
+
+  wheel_l1_.pos = wheel_l_.pos;
+  wheel_l1_.vel = wheel_l_.vel;
+
+  
+  wheel_r1_.pos = wheel_r_.pos;
+  wheel_r1_.vel = wheel_r_.vel;
 
   return hardware_interface::return_type::OK;
 }

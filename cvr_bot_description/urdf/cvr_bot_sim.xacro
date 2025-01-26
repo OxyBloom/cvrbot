@@ -52,14 +52,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/base_link.dae" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://cvr_bot_description/meshes/base_link.dae" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="blue"/>
   </visual>
   <collision>
     <origin xyz="0 0 0.115" rpy="0 0 0"/>
     <geometry>
-      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/base_link.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <mesh filename="package://cvr_bot_description/meshes/base_link.dae" scale="0.001 0.001 0.001"/> -->
       <box size="0.29 0.29 0.23"/>
     </geometry>
   </collision>
@@ -79,14 +79,14 @@
   <visual>
     <origin xyz="0.094914 0.152452 -0.064084" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://cvr_bot_description/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <!-- <origin xyz="0.094914 0.152452 -0.064084" rpy="0 0 0"/> -->
     <geometry>
-      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <mesh filename="package://cvr_bot_description/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/> -->
       <sphere radius="${wheel_radius}"/>
     </geometry>
   </collision>
@@ -102,14 +102,14 @@
   <visual>
     <origin xyz="-0.095849 0.151214 -0.062584" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://cvr_bot_description/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <!-- <origin xyz="-0.095849 0.151214 -0.062584" rpy="0 0 0"/> -->
     <geometry>
-      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <mesh filename="package://cvr_bot_description/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/> -->
       <sphere radius="${wheel_radius}"/>
     </geometry>
   </collision>
@@ -125,14 +125,14 @@
   <visual>
     <origin xyz="-0.095849 -0.162786 -0.062584" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://cvr_bot_description/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <!-- <origin xyz="-0.095849 -0.162786 -0.062584" rpy="0 0 0"/> -->
     <geometry>
-      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <mesh filename="package://cvr_bot_description/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/> -->
       <sphere radius="${wheel_radius}"/>
     </geometry>
   </collision>
@@ -148,14 +148,14 @@
   <visual>
     <origin xyz="0.096151 -0.162786 -0.062584" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://cvr_bot_description/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <!-- <origin xyz="0.096151 -0.162786 -0.062584" rpy="0 0 0"/> -->
     <geometry>
-      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <mesh filename="package://cvr_bot_description/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/> -->
       <sphere radius="${wheel_radius}"/>
     </geometry>
   </collision>
@@ -237,14 +237,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/laser_link.STL" />
+      <mesh filename="package://cvr_bot_description/meshes/laser_link.STL" />
     </geometry>
     <material name="black"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="file://$(find cvr_bot_description)/meshes/laser_link.STL" />
+      <mesh filename="package://cvr_bot_description/meshes/laser_link.STL" />
     </geometry>
   </collision>
 </link>

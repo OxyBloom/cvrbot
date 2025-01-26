@@ -85,6 +85,12 @@ def generate_launch_description():
         )
     )
 
+    lidar = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','rplidar.launch.py'
+                )])
+    )
+
     imu_driver_node = Node(
         package="cvrbot_firmware",
         executable="mpu6050_driver.py"
@@ -123,6 +129,7 @@ def generate_launch_description():
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner,
+        lidar,
         imu_driver_node,
-        # safety_stop
+        safety_stop
     ])
