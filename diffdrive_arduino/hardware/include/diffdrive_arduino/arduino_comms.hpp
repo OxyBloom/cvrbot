@@ -41,6 +41,9 @@ public:
     timeout_ms_ = timeout_ms;
     serial_conn_.Open(serial_device);
     serial_conn_.SetBaudRate(convert_baud_rate(baud_rate));
+    std::stringstream ss;
+    ss << "r" << "\r";
+    send_msg(ss.str());
   }
 
   void disconnect()

@@ -49,5 +49,5 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         mapping,
-        localization
+        # localization
     ])
