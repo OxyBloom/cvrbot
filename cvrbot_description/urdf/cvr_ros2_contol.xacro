@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumperbot">
+
+    <ros2_control name="RobotSystem" type="system">
+
+        <!-- ros2_control Gazebo -->
+        <xacro:if value="$(arg is_sim)">
+            <hardware>
+                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            </hardware>
+        </xacro:if>
+
+        <!-- ros2_control Real Robot -->
+        <xacro:unless value="$(arg is_sim)">
+            <hardware>
+                <plugin>diffdrive_arduino/DiffDriveArduinoHardware</plugin>
+                <param name="left_wheel_name">BL_joint</param>
+                <param name="right_wheel_name">BR_joint</param>
+                <param name="left1_wheel_name">FL_joint</param>
+                <param name="right1_wheel_name">FR_joint</param>
+                <param name="loop_rate">30</param>
+                <param name="device">/dev/ttyUSB0</param>
+                <param name="baud_rate">57600</param>
+                <param name="timeout_ms">1000</param>
+                <param name="enc_counts_per_rev">2952</param>
+            </hardware>
+        </xacro:unless>
+
+
+          <!-- ros2_control Gazebo -->
+        <!-- <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware> -->
+<!--  -->
+        
+
+        <!-- ros2_control Common Interfaces -->
+        <joint name="BR_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+        <joint name="BL_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+
+        <!-- ros2_control Common Interfaces -->
+        <joint name="FR_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+        <joint name="FL_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+    </ros2_control>
+
+</robot>
