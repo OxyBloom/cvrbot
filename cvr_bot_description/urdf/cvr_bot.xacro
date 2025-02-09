@@ -2,7 +2,7 @@
 <robot name="cvr_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find cvr_bot_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find cvr_bot_description)/urdf/cvr_bot.trans" />
+<!-- <xacro:include filename="$(find cvr_bot_description)/urdf/cvr_bot.trans" /> -->
 <xacro:include filename="$(find cvr_bot_description)/urdf/cvr_bot.gazebo" />
 
 <xacro:property name="base_mass" value="46.034" />

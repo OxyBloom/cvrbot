@@ -1,8 +1,53 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
+
 <robot name="cvr_bot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
 <xacro:property name="body_color" value="Gazebo/Black" />
 
+<!-- <gazebo>
+  <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+    <robot_param>robot_description</robot_param>
+    <robot_param_node>robot_state_publisher</robot_param_node>
+    <parameters>$(find bot_controller)/config/bot_controllers.yaml</parameters>
+  </plugin>
+</gazebo> -->
+
+<gazebo>
+    <plugin name="wheel_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+      <!-- wheels -->
+      <num_wheel_pairs>2</num_wheel_pairs>
+      <left_joint>BL_joint</left_joint>
+      <left_joint>FL_joint</left_joint>
+      <right_joint>BR_joint</right_joint>
+      <right_joint>FR_joint</right_joint>
+
+      <!-- kinematics -->
+      <wheel_separation>0.4</wheel_separation>
+      <wheel_diameter>0.125</wheel_diameter>
+      
+      <max_wheel_torque>100.0</max_wheel_torque>
+      <max_wheel_acceleration>10.0</max_wheel_acceleration>
+
+      <!-- odometry  --> 
+      <odometry_source>1</odometry_source>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+      <!-- topic & re remappings -->
+      <ros>
+        <namespace>/</namespace>
+        <remapping>/cmd_vel:=cmd_vel</remapping>
+        <remapping>/odom:=odom</remapping>
+      </ros>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+      <update_rate>100.0</update_rate>
+      <!-- <update_rate>100.0</update_rate> -->
+    </plugin>
+  </gazebo>
 
 <gazebo reference="cvr_bot_base_link">
   <material>Gazebo/Blue</material>
@@ -49,7 +94,7 @@
       <ray>
           <scan>
               <horizontal>
-                <samples>360</samples>
+                <samples>720</samples>
                 <min_angle>-3.14</min_angle>
                 <max_angle>3.14</max_angle>
               </horizontal>

@@ -1,4 +1,5 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
+
 <robot name="cvr_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find cvr_bot_description)/urdf/materials.xacro" />
@@ -7,7 +8,7 @@
 
 <xacro:property name="base_mass" value="2.034" />
 <xacro:property name="wheel_mass" value="0.8637" />
-<xacro:property name="wheel_radius" value="0.07"/>
+<xacro:property name="wheel_radius" value="0.0625"/>
 
 <xacro:macro name="box_inertia" params="b_mass b_x b_y b_z">
         <mass value="${b_mass}"/>
@@ -57,16 +58,16 @@
     <material name="blue"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0.115" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <!-- <mesh filename="package://cvr_bot_description/meshes/base_link.dae" scale="0.001 0.001 0.001"/> -->
-      <box size="0.29 0.29 0.23"/>
+      <mesh filename="file://$(find cvr_bot_description)/meshes/base_link.dae" scale="0.001 0.001 0.001"/>
+      <!-- <box size="0.29 0.29 0.23"/> -->
     </geometry>
   </collision>
 </link>
 
 <xacro:property name="wheel_inertia">
-    <xacro:cylinder_inertia c_mass="${wheel_mass}" r = "0.065" l="0.0471"/>   <!--  mass radius length of a wheel -->
+    <xacro:cylinder_inertia c_mass="${wheel_mass}" r = "0.0625" l="0.0471"/>   <!--  mass radius length of a wheel -->
 </xacro:property>
 
 <link name="br_wheel">
@@ -85,9 +86,11 @@
   </visual>
   <collision>
     <!-- <origin xyz="0.094914 0.152452 -0.064084" rpy="0 0 0"/> -->
+    <origin xyz="0.0 -0.015 0.0" rpy="1.57 0 0"/>
     <geometry>
-      <!-- <mesh filename="package://cvr_bot_description/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/> -->
-      <sphere radius="${wheel_radius}"/>
+      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/br_wheel_2.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <sphere radius="${wheel_radius}"/> -->
+      <cylinder length="0.045" radius="0.065"/>
     </geometry>
   </collision>
 </link>
@@ -108,9 +111,11 @@
   </visual>
   <collision>
     <!-- <origin xyz="-0.095849 0.151214 -0.062584" rpy="0 0 0"/> -->
+    <origin xyz="0.0 -0.015 0.0" rpy="1.57 0 0"/>
     <geometry>
-      <!-- <mesh filename="package://cvr_bot_description/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/> -->
-      <sphere radius="${wheel_radius}"/>
+      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/fr_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <sphere radius="${wheel_radius}"/> -->
+      <cylinder length="0.045" radius="0.065"/>
     </geometry>
   </collision>
 </link>
@@ -131,9 +136,11 @@
   </visual>
   <collision>
     <!-- <origin xyz="-0.095849 -0.162786 -0.062584" rpy="0 0 0"/> -->
+    <origin xyz="0.0 0.015 0.0" rpy="1.57 0 0"/>
     <geometry>
-      <!-- <mesh filename="package://cvr_bot_description/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/> -->
-      <sphere radius="${wheel_radius}"/>
+      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/fl_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <sphere radius="${wheel_radius}"/> -->
+      <cylinder length="0.045" radius="0.065"/>
     </geometry>
   </collision>
 </link>
@@ -154,9 +161,11 @@
   </visual>
   <collision>
     <!-- <origin xyz="0.096151 -0.162786 -0.062584" rpy="0 0 0"/> -->
+    <origin xyz="0.0 0.015 0.0" rpy="1.57 0 0"/>
     <geometry>
-      <!-- <mesh filename="package://cvr_bot_description/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/> -->
-      <sphere radius="${wheel_radius}"/>
+      <!-- <mesh filename="file://$(find cvr_bot_description)/meshes/bl_wheel.dae" scale="0.001 0.001 0.001"/> -->
+      <!-- <sphere radius="${wheel_radius}"/> -->
+      <cylinder length="0.045" radius="0.065"/>
     </geometry>
   </collision>
 </link>
