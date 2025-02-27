@@ -16,7 +16,7 @@ cd ~/cvrbot_ws
 
 ### To Clone Repo-
 ```sh
-git clone https://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@github.com/OxyBloom/cvrbot.git ./src/
+git clone https://github.com/OxyBloom/cvrbot.git ./src/
 ```
 ### Get dependencies
 ```sh
