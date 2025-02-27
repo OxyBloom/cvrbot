@@ -15,13 +15,13 @@ def generate_launch_description():
         default_value="false"
     )
 
-    hardware_interface = IncludeLaunchDescription(
-        os.path.join(
-            get_package_share_directory("bumperbot_firmware"),
-            "launch",
-            "hardware_interface.launch.py"
-        ),
-    )
+    # hardware_interface = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("bumperbot_firmware"),
+    #         "launch",
+    #         "hardware_interface.launch.py"
+    #     ),
+    # )
 
     laser_driver = Node(
             package="rplidar_ros",
@@ -34,32 +34,50 @@ def generate_launch_description():
             )],
             output="screen"
     )
-    
-    controller = IncludeLaunchDescription(
-        os.path.join(
-            get_package_share_directory("bumperbot_controller"),
-            "launch",
-            "controller.launch.py"
-        ),
-        launch_arguments={
-            "use_simple_controller": "False",
-            "use_python": "False"
-        }.items(),
-    )
-    
-    joystick = IncludeLaunchDescription(
-        os.path.join(
-            get_package_share_directory("bumperbot_controller"),
-            "launch",
-            "joystick_teleop.launch.py"
-        ),
-    )
 
-    safety_stop = Node(
-        package="bumperbot_utils",
-        executable="safety_stop",
-        output="screen",
-    )
+    # laser_driver = Node(
+    #         package='rplidar_ros',
+    #         executable='rplidar_composition',
+    #         output='screen',
+    #         # parameters=[os.path.join(
+    #         #     get_package_share_directory("bumperbot_bringup"),
+    #         #     "config",
+    #         #     "rplidar_a1.yaml"
+    #         # )],
+    #         parameters=[{
+    #             'serial_port': '/dev/ttyUSB0',
+    #             'frame_id': 'laser',
+    #             'inverted': False,
+    #             'angle_compensate': True,
+    #             'scan_mode': 'Standard'
+    #         }]
+    # )
+    
+    # controller = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("bumperbot_controller"),
+    #         "launch",
+    #         "controller.launch.py"
+    #     ),
+    #     launch_arguments={
+    #         "use_simple_controller": "False",
+    #         "use_python": "False"
+    #     }.items(),
+    # )
+    
+    # joystick = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("bumperbot_controller"),
+    #         "launch",
+    #         "joystick_teleop.launch.py"
+    #     ),
+    # )
+
+    # safety_stop = Node(
+    #     package="bumperbot_utils",
+    #     executable="safety_stop",
+    #     output="screen",
+    # )
 
     localization = IncludeLaunchDescription(
         os.path.join(
@@ -81,11 +99,11 @@ def generate_launch_description():
     
     return LaunchDescription([
         use_slam_arg,
-        hardware_interface,
+        # hardware_interface,
         laser_driver,
-        controller,
-        joystick,
-        safety_stop,
+        # controller,
+        # joystick,
+        # safety_stop,
         localization,
         slam
     ])

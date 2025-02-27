@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100 # Hz
+    update_rate: 50 # Hz
 
     bumperbot_controller:
       type: diff_drive_controller/DiffDriveController
@@ -19,11 +19,11 @@ bumperbot_controller:
     left_wheel_names  : ['BL_joint']
     right_wheel_names : ['BR_joint']
 
-    publish_rate: 50.0               # default: 50
+    publish_rate: 50.0 #50.0               # default: 50
     pose_covariance_diagonal : [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
     twist_covariance_diagonal: [0.001, 0.001, 1.0e-3, 1.0e-3, 1.0e-3, 0.01]
 
-    wheel_separation : 0.3
+    wheel_separation : 0.34
     wheel_radius : 0.0625
 
     wheel_separation_multiplier: 1.0
@@ -35,6 +35,7 @@ bumperbot_controller:
 
     # Base frame_id
     base_frame_id: base_footprint #default: base_link
+    
 
     # Publish limited velocity
     publish_limited_velocity: true

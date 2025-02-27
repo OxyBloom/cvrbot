@@ -53,7 +53,7 @@ def generate_launch_description():
     )
     wheel_separation_arg = DeclareLaunchArgument(
         "wheel_separation",
-        default_value="0.3",
+        default_value="0.34",
     )
     wheel_radius_error_arg = DeclareLaunchArgument(
         "wheel_radius_error",

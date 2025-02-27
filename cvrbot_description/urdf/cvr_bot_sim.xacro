@@ -5,7 +5,7 @@
   <xacro:arg name="is_sim" default="true"/>
 
 <xacro:include filename="$(find cvrbot_description)/urdf/materials.xacro" />
-<!-- <xacro:include filename="$(find cvrbot_description)/urdf/cvr_bot.trans" /> -->
+<xacro:include filename="$(find cvrbot_description)/urdf/cvr_bot.trans" />
 <xacro:include filename="$(find cvrbot_description)/urdf/cvr_gazebo.xacro" />
 <xacro:include filename="$(find cvrbot_description)/urdf/cvr_ros2_contol.xacro" />
 
@@ -237,7 +237,7 @@
     xyz="0 0 0" />
 </joint>
 
-<link name="laser">
+<link name="laser_link">
   <inertial>
     <origin xyz="-0.011945780406062 -0.000381929217680526 -0.0170649378129477" rpy="0 0 0" />
     <mass value="0.073084435549317" />
@@ -262,8 +262,9 @@
 
 <joint name="laser_joint" type="fixed">
   <origin xyz="0.080526 0.0 0.26" rpy="0 0 3.14" />
+  <!-- <origin xyz="-0.0050526 -0.0023221 0.1208" rpy="0 0 0" /> -->
   <parent link="cvr_bot_base_link" />
-  <child link="laser" />
+  <child link="laser_link" />
   <axis xyz="0 0 0" />
 </joint>
 

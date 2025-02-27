@@ -44,9 +44,21 @@ def generate_launch_description():
         ],
     )
 
+    # imu_driver_node = Node(
+    #     package="bumperbot_firmware",
+    #     executable="mpu6050_driver.py"   bumperbot_utils
+    # )
+    
     imu_driver_node = Node(
-        package="bumperbot_firmware",
-        executable="mpu6050_driver.py"
+        package="bumperbot_utils",
+        executable="mpu6050_driver.py" 
+    )
+
+    imu_filtered = Node(
+            package="imu_filter_madgwick",
+            executable="imu_filter_madgwick_node",
+            parameters=[{"publish_tf":False,"use_mag":False,"world_frame":"enu"}],
+            remappings=[('imu/data_raw','imu/out'),('imu/data','imu')]
     )
 
     return LaunchDescription(
@@ -54,5 +66,6 @@ def generate_launch_description():
             robot_state_publisher_node,
             controller_manager,
             imu_driver_node,
+            imu_filtered
         ]
     )
