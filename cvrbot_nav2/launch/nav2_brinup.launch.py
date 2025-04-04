@@ -1,23 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-''' 
-*****************************************************************************************
-*
-*        =============================================
-*                  LB Theme (eYRC 2024-25)
-*        =============================================
-*
-*
-*  Filename:			ebot_nav2_bringup.launch.py
-*  Description:         Use this file to start navigation on pre-generated map.
-*  Created:				31/12/2024
-*  Last Modified:	    31/12/2024
-*  Modified by:         Siddharth
-*  Author:				e-Yantra Team
-*  
-*****************************************************************************************
-'''
 
 import os
 
@@ -100,8 +83,7 @@ def generate_launch_description():
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
         default_value=os.path.join(ebot_real_nav2_dir, 'params', 'nav2_params.yaml'),         # with odom
-        # default_value=os.path.join(ebot_real_nav2_dir, 'params', 'nav2_params_filtered.yaml'),  # with imu sensor fusion, filtered odometry
-        # default_value=os.path.join(ebot_real_nav2_dir, 'params', 'nav2_params_filtered_demo.yaml'),
+        
         description='Full path to the ROS2 parameters file to use for all launched nodes')
 
     declare_autostart_cmd = DeclareLaunchArgument(
@@ -138,7 +120,6 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file],
         output='screen')
     
-    # print("!!! rviz_config_file !!!",)
     
     mapper_online_async_param_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -152,7 +133,7 @@ def generate_launch_description():
        executable='ekf_node',
        name='ekf_filter_node',
        output='screen',
-       parameters=[os.path.join(ebot_real_nav2_dir, 'config', 'hardware', 'ekf.yaml'), {'use_sim_time': use_sim_time}] ##Loads the ekf.yaml file
+       parameters=[os.path.join(ebot_real_nav2_dir, 'config', 'hardware', 'ekf.yaml'), {'use_sim_time': use_sim_time}] 
     )
     
     # pkg_share = FindPackageShare(package='cvr_bot_description').find('cvr_bot_description')
