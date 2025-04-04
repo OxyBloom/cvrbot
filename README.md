@@ -1,7 +1,3 @@
-# In Progress...
-```
-We are currently trying to resolve the in accuracy of our odometry 
-```
 # CVRBot
 ![cvr_bot_image v2](https://github.com/user-attachments/assets/54451a6c-dc5d-4ade-80e8-ca83ea193616)
 
@@ -41,6 +37,7 @@ source install/setup.bash
 echo "source ~/cvrbot_ws/install/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
+# Adding Cameras Soon...
 
 ## :selfie: Media
 [![YouTube](http://i.ytimg.com/vi/K5cwBx4CH-k/hqdefault.jpg)](https://www.youtube.com/watch?v=K5cwBx4CH-k)
