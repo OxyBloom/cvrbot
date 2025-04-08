@@ -1,4 +1,5 @@
 # CVRBot
+### Currently migrating to new gazebo. Expect Release Soon!
 ![cvr_bot_image v2](https://github.com/user-attachments/assets/54451a6c-dc5d-4ade-80e8-ca83ea193616)
 
 
